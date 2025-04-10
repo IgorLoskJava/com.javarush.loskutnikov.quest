@@ -48,7 +48,7 @@ public class SessionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ++backCounter;
         String url = "/page" + backCounter + ".jsp";
-        String parameter = request.getParameter("choice");
+
 
         if (request.getParameter("choice").equals("option1")) {
             if (url.equals("/page5.jsp")) {
