@@ -1,5 +1,6 @@
 package org.example.quest;
 
+import entity.Statistic;
 import entity.User;
 import org.apache.commons.lang3.StringUtils;
 
@@ -18,6 +19,7 @@ public class SessionServlet extends HttpServlet {
 
     static int LIFE = 3;
     static int backCounter = 1;
+    static int gameCounter = 1;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html;charset=UTF-8");
@@ -31,6 +33,7 @@ public class SessionServlet extends HttpServlet {
 
             if (session.getAttribute("user") == null) {
                 session.setAttribute("user", user);
+                Statistic statistic = Statistic.getInstance();
             }
 
             RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/page1.jsp");

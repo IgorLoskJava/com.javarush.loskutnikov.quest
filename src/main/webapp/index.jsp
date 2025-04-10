@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -15,10 +16,8 @@
         <div class="row">
             <div class="col">
                 <h2>
-                    <p class="text-center"><%= "JavaRush. Module 3. Quest" %></p>
+                    <p class="text-center"><c:out value="JavaRush. Module 3. Quest"/></p>
                 </h2>
-
-
 
                 Привет, юный друг! Предлагаю тебе пройти небольшой квест, который поможет найти свой путь в профессии
                 разработчика.

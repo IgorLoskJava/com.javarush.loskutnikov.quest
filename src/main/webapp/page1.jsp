@@ -43,7 +43,6 @@
                         <input type="radio" id="option2" name="choice" value="option2">
                         <label for="option2"><% out.print(Service.getAnswers().get(1)); %></label><br>
 
-                        <!-- <input type="submit" value="Отправить"> -->
                         <input class="btn btn-primary" type="submit" value="Продолжить">
                     </form>
                 </div>
