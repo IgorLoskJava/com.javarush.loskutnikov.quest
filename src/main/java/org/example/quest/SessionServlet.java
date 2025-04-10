@@ -22,24 +22,30 @@ public class SessionServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html;charset=UTF-8");
         String name = request.getParameter("username");
-        User user = User.getInstance();
-        user.setName(name);
-        user.setLife(LIFE);
+        while (!StringUtils.isBlank(name)) {
+            User user = User.getInstance();
+            user.setName(name);
+            user.setLife(LIFE);
 
-        HttpSession session = request.getSession();
+            HttpSession session = request.getSession();
 
-        if (session.getAttribute("user") == null) {
-            session.setAttribute("user", user);
+            if (session.getAttribute("user") == null) {
+                session.setAttribute("user", user);
+            }
+
+            RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/page1.jsp");
+            requestDispatcher.forward(request, response);
         }
 
-        RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/page1.jsp");
-        requestDispatcher.forward(request, response);
+        DispatcherServlet.forward("/index.jsp", request, response);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ++backCounter;
         String url = "/page" + backCounter + ".jsp";
+        String parameter = request.getParameter("choice");
 
         if (request.getParameter("choice").equals("option1")) {
             if (url.equals("/page5.jsp")) {
@@ -62,6 +68,7 @@ public class SessionServlet extends HttpServlet {
             DispatcherServlet.forward("/index.jsp", request, response);
         }
     }
+
 
     public void destroy() {
     }

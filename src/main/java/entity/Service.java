@@ -29,6 +29,4 @@ public class Service {
         return answers;
     }
 
-
-
 }
